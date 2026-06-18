@@ -1,0 +1,9 @@
+jupyter
+matplotlib
+numpy
+pandas
+prophet
+ruptures
+scikit-learn
+seaborn
+statsmodels
