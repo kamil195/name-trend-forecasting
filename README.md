@@ -1,130 +1,110 @@
 # Name Trend Forecasting
 
-A time-series and machine-learning project that analyzes historical U.S. baby-name popularity and forecasts future naming trends.
+A time-series and machine-learning project for exploring historical baby-name popularity and forecasting future naming trends.
 
-![Name trend visualization](assets/name-trends.png)
+## Project objective
 
-## Project overview
+Baby names can reflect cultural changes, generational preferences, and long-term social patterns. This project provides a reproducible notebook for examining name popularity over time and building baseline forecasts for selected names.
 
-Baby names often reflect cultural shifts, generational preferences, and changing social patterns. This project analyzes historical U.S. baby-name data, explores long-term popularity trends, and compares several forecasting and pattern-discovery techniques.
+## Current features
 
-## Key features
+- Loads historical name records from a CSV file
+- Validates required columns
+- Cleans year and count fields
+- Selects and visualizes a name-popularity series
+- Builds a linear-regression forecasting baseline
+- Evaluates baseline predictions using MAE and RMSE
+- Produces an ARIMA forecast for future years
+- Provides a foundation for Prophet, clustering, and changepoint extensions
 
-- Identifies popular names overall and by decade
-- Visualizes long-term trends for selected names
-- Compares naming patterns by gender
-- Forecasts future popularity using Linear Regression, ARIMA, and Prophet
-- Groups names with similar trajectories using K-Means clustering
-- Detects structural changes using changepoint detection
+## Technologies used
+
+- Python
+- pandas
+- NumPy
+- matplotlib
+- scikit-learn
+- statsmodels
+- Prophet and ruptures as optional extensions
+- Jupyter Notebook
 
 ## Repository structure
 
 ```text
-.
-├── assets/
-│   ├── name-trends.png
-│   ├── arima-forecast.png
-│   ├── prophet-forecast.png
-│   └── changepoint-example.png
-├── notebooks/
-│   └── name_trend_forecasting.ipynb
-├── reports/
-│   ├── name_trend_forecasting_report.pdf
-│   └── name_trend_forecasting_report.docx
-├── .gitignore
-├── AUTHORS.md
-├── CITATION.cff
-├── CONTRIBUTING.md
-├── LICENSE
-├── README.md
-└── requirements.txt
+data/
+  README.md
+notebooks/
+  name_trend_forecasting.ipynb
+README.md
+requirements.txt
+LICENSE
+.gitignore
 ```
 
-## Technologies
+## Dataset format
 
-- Python
-- pandas and NumPy
-- matplotlib and seaborn
-- scikit-learn
-- statsmodels ARIMA
-- Prophet
-- ruptures
-- Jupyter Notebook
+Add a permitted CSV file at:
 
-## Getting started
-
-```bash
-git clone <repository-url>
-cd name-trend-forecasting
-python -m venv .venv
+```text
+data/name_trends.csv
 ```
 
-Activate the environment:
+The notebook expects at least these columns:
 
-```bash
-# Windows
-.venv\Scripts\activate
+- `Year`
+- `Name`
+- `Count`
 
-# macOS/Linux
-source .venv/bin/activate
-```
+A `Gender` column may also be added for extended analysis.
 
-Install dependencies:
+## How to run
 
 ```bash
 pip install -r requirements.txt
-```
-
-Run the notebook:
-
-```bash
 jupyter notebook notebooks/name_trend_forecasting.ipynb
 ```
 
-Internet access is required the first time the dataset is downloaded.
+Run the cells from top to bottom after adding the dataset.
 
 ## Methodology
 
-1. Load and inspect the historical name dataset
-2. Clean and aggregate records by year, name, and gender
-3. Explore trends by year and decade
-4. Build baseline forecasts
-5. Apply ARIMA and Prophet
-6. Cluster names with similar historical patterns
-7. Detect changepoints in popularity trajectories
+1. Load and validate the historical name data.
+2. Clean missing or invalid values.
+3. Aggregate counts by year and name.
+4. Plot the historical popularity of a selected name.
+5. Split the series into training and testing periods.
+6. Fit a linear-regression baseline.
+7. Calculate MAE and RMSE.
+8. Fit an ARIMA model and forecast future values.
 
-## Sample results
+## Expected outputs
 
-### ARIMA forecast
-
-![ARIMA forecast](assets/arima-forecast.png)
-
-### Prophet forecast
-
-![Prophet forecast](assets/prophet-forecast.png)
-
-### Changepoint detection
-
-![Changepoint detection](assets/changepoint-example.png)
+- Historical popularity line chart
+- Baseline model evaluation values
+- Ten-year ARIMA forecast
+- A reusable framework for comparing more names and models
 
 ## Limitations
 
-- Forecast parameters are educational rather than exhaustively optimized
-- Sparse or irregular name histories can reduce forecast accuracy
-- Results may vary slightly across package versions
-- The project is intended as an academic data-science demonstration
+- The dataset is not currently included in the repository.
+- The ARIMA configuration is an educational baseline and is not exhaustively tuned.
+- Name popularity may be affected by social changes that historical patterns cannot predict reliably.
+- The current notebook focuses on one selected name at a time.
 
 ## Future improvements
 
-- Add train/test evaluation with MAE, RMSE, and MAPE
-- Compare additional forecasting models
-- Add an interactive Streamlit interface
-- Refactor reusable functions into a `src/` package
-- Add automated tests
+- Add a public example dataset
+- Compare multiple names and gender groups
+- Add Prophet forecasting
+- Add rolling-origin cross-validation
+- Add MAPE and confidence intervals
+- Add clustering for names with similar trajectories
+- Add changepoint detection
+- Build a Streamlit interface
 
 ## Author
 
-**Kamil Shah**  
+**Muhammad Kamil Shah**  
 BS Data Science
 
 ## License
