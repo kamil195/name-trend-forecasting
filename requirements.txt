@@ -7,3 +7,4 @@ ruptures
 scikit-learn
 seaborn
 statsmodels
+streamlit
